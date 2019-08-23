@@ -18,6 +18,10 @@ export default class ImageEditor extends React.Component {
     this.bindEventHandlers(this.props);
   }
 
+  componentWillUnmount() {
+    this.imageEditorInst.destroy();
+  }
+
   shouldComponentUpdate(nextProps) {
     console.log('nextProps');
     this.bindEventHandlers(this.props, nextProps);
