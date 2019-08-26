@@ -19,11 +19,12 @@ export default class ImageEditor extends React.Component {
   }
 
   componentWillUnmount() {
+    this.unbindEventHandlers();
+
     this.imageEditorInst.destroy();
   }
 
   shouldComponentUpdate(nextProps) {
-    console.log('nextProps');
     this.bindEventHandlers(this.props, nextProps);
 
     return false;
@@ -44,10 +45,18 @@ export default class ImageEditor extends React.Component {
         const eventName = key[2].toLowerCase() + key.slice(3);
         // For <ImageEditor onFocus={condition ? onFocus1 : onFocus2} />
         if (prevProps && prevProps[key] !== props[key]) {
-          console.log('ho?');
           this.imageEditorInst.off(eventName);
         }
         this.imageEditorInst.on(eventName, props[key]);
+      });
+  }
+
+  unbindEventHandlers() {
+    Object.keys(this.props)
+      .filter((key) => /on[A-Z][a-zA-Z]+/.test(key))
+      .forEach((key) => {
+        const eventName = key[2].toLowerCase() + key.slice(3);
+        this.imageEditorInst.off(eventName);
       });
   }
 
