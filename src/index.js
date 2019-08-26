@@ -22,6 +22,8 @@ export default class ImageEditor extends React.Component {
     this.unbindEventHandlers();
 
     this.imageEditorInst.destroy();
+
+    this.imageEditorInst = null;
   }
 
   shouldComponentUpdate(nextProps) {
@@ -40,7 +42,7 @@ export default class ImageEditor extends React.Component {
 
   bindEventHandlers(props, prevProps) {
     Object.keys(props)
-      .filter((key) => /on[A-Z][a-zA-Z]+/.test(key))
+      .filter(this.isEventHandlerKeys)
       .forEach((key) => {
         const eventName = key[2].toLowerCase() + key.slice(3);
         // For <ImageEditor onFocus={condition ? onFocus1 : onFocus2} />
@@ -53,11 +55,15 @@ export default class ImageEditor extends React.Component {
 
   unbindEventHandlers() {
     Object.keys(this.props)
-      .filter((key) => /on[A-Z][a-zA-Z]+/.test(key))
+      .filter(this.isEventHandlerKeys)
       .forEach((key) => {
         const eventName = key[2].toLowerCase() + key.slice(3);
         this.imageEditorInst.off(eventName);
       });
+  }
+
+  isEventHandlerKeys(key) {
+    return /on[A-Z][a-zA-Z]+/.test(key);
   }
 
   render() {
