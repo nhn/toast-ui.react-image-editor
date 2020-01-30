@@ -54,6 +54,6 @@
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
-    "tui-image-editor": "^3.4.0"
+    "tui-image-editor": "^3.7.3"
   }
 }
