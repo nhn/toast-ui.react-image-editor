@@ -1,3 +1,9 @@
+# ⚠️Notice: This repository is deprecated️️️️️
+
+TOAST UI ImageEditor React Wrapper has been managed separately from the TOAST UI ImageEditor repository. As a result of the distribution of these issues, we decided to deprecate each wrapper repository and manage repository as a [mono-repo](https://en.wikipedia.org/wiki/Monorepo) from the [TOAST UI ImageEditor repository](https://github.com/nhn/tui.image-editor).
+
+From now on, please submit issues or contributing related to TOAST UI React Wrapper to [TOAST UI ImageEditor repository](https://github.com/nhn/tui.image-editor). Thank you🙂.
+
 # TOAST UI Image Editor for React
 
 > This is a React component wrapping [TOAST UI Image Editor](https://github.com/nhn/tui.image-editor).
